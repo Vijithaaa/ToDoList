@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo</title>
+</head>
+
+<body>
+    <div id="container">
+        <h2>To do List</h2>
+        <input type="text" id="text">
+        <input type="button" value="Add" id="button">
+        <div id="display">
+
+        </div>
+
+    </div>
+
+    <script>
+        let input = document.getElementById("text")
+        let button = document.getElementById("button")
+        let todolist = document.getElementById("display")
+
+        todos = []
+        button.addEventListener("click", () => {
+            let todo = input.value
+            todos.push(todo)
+            console.log(todos)
+
+
+            let para = document.createElement("div")
+            para.innerText = todo
+            todolist.appendChild(para)
+
+            para.addEventListener("click", () => {
+                para.style.textDecoration = "line-through"
+            })
+            para.addEventListener("dblclick", () => {
+                todolist.removeChild(para)
+                // arr la irudhum andha element remove aaganum...so todos.splice(todos.indexof(todo,1))==>todos array la todos.indexOf na..remove panna pora element 
+                // let remove = todos.indexOf(todo)
+                // todos.splice(remove, 1)
+                todos.splice(todos.indexOf(todo),1)
+
+                console.log(todos)
+
+
+            })
+            input.value = ""
+        })
+
+
+
+
+    </script>
+</body>
+
+</html>
